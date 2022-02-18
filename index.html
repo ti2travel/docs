@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Home - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Plugin.html">Plugin</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#validateToken">validateToken</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#getProfile">getProfile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateProfile">updateProfile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createLocation">createLocation</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateLocation">updateLocation</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#getProducts">getProducts</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createProduct">createProduct</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateProduct">updateProduct</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchBooking">searchBooking</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchProducts">searchProducts</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchAvailability">searchAvailability</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchQuote">searchQuote</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createBooking">createBooking</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+    <section class="readme">
+        <article><h1>Ti2</h1>
+<p>Ti2 (Tourism Information Interchange) is an open source integration framework, built by and for the tourism community. Ti2's goal is to make integrations in our industry faster and easier to build, while providing a framework for innovation on top of these integrations.</p>
+<p>Core functions of Ti2 are currently focused on content, rates, and bookings.</p>
+<h2>About this Project</h2>
+<h3>How it Works</h3>
+<p>Ti2 has a core codebase of standardized industry functions (new, update, cancel, etc.) for bookings, content, and rates - with more to come. Plugins are used to connect to the Ti2 to perform a task (like create a booking). There are two types of plugins: Integration and App.</p>
+<p>Integration Plugins are used to connect core systems, like booking/reservation or content management systems, to Ti2. For example, you would use a Integration Plugin to connect Ventrata to Ti2. You would do this to be able to accept bookings from another system (like an OTA) connected to Ti2. <em>Ti2 allows any Integration Plugin to communicate with each other; therefore, once a Integration Plugin is live, no one ever needs to write a custom integration for that system again.</em></p>
+<p>App Plugins are value added tools that only speak to Ti2 and other plugins. For example, you might create an App Plugin that sends email notifications every morning with a list of all active bookings for the day. You would retrieve the list of bookings for the day by using a System Plugin.</p>
+<p>Ti2 can be deployed on your own servers, or you can connect to a Ti2 instance that another company is hosting.</p>
+<h3>Why use Ti2 ?</h3>
+<p>Ti2 gives a free, open source solution to building integrations across our industry. In addition, tools can be built on top of Ti2, that add additional value to these integrations - whether for the good of our industry or for profit.</p>
+<p><strong>Become part of the community, start building on Ti2 today!</strong></p>
+<h2>Getting Started</h2>
+<h3>Requirements</h3>
+<p>Some environment variables are required for ti2 to start</p>
+<ul>
+<li>DB_URL (mysql connection in url format)</li>
+<li>dbCryptoKey (integration details encription key, should be a 32 chars random string base64 encoded)</li>
+<li>adminKey (a key for admin related requests)</li>
+<li>jwtKey (a key to encrypt user sessions request)</li>
+<li>frontendKey (an additional optional key to validate the origin of the requests)</li>
+<li>PORT (an optional port to run the http server, in case a port is not specified as a parameter)</li>
+</ul>
+<h3>Starting your server</h3>
+<p>You can start your own instance by instlling ti2 and any aplugin syou may want to use on your own nodejs project root folter:</p>
+<pre class="prettyprint source lang-bash"><code>$ npm i ti2 ti2-travelgate ti2-ventrata ti2-tourconnect
+</code></pre>
+<p>To start the server with default values use the following:</p>
+<pre class="prettyprint source lang-javascript"><code>const ti2 = require('ti2')({
+  plugins: {
+    travelgate: require('ti2-travelgate'),
+    ventrata: require('ti2-ventrata'),
+    tourconnect: require('ti2-tourconnect'),
+  },
+});
+</code></pre>
+<h2>Plugins</h2>
+<p>Plugins are the connectores to other systems and/or features you intent to use; by default the server will start an API service on port 10010 and the swagger documentation on the path //api-docs, (you can disable wither by passing the startServer param as False or the apiDocs as False.</p>
+<p>Plugin environment keys are passed down to the instance while is being created, this is the preferred way of accesing environmen keys from the plugins, such values are not design to hold client / user's API keys or specific data, they are to be stored on the database itself via the AppKey collection.</p>
+<p>Plugin ENV variable name convention: ti2_pluginName_environmenVariableName, for example:</p>
+<pre class="prettyprint source lang-env"><code>ti2_tourconnect_apiUrl=http://backend:8080
+</code></pre>
+<h3>Plugin Library</h3>
+<table>
+<thead>
+<tr>
+<th>Methods</th>
+<th><a href="https://github.com/TourConnect/ti2-ventrata">Ventrata</a></th>
+<th><a href="https://github.com/TourConnect/ti2-travelgate">TravelGateX</a></th>
+<th><a href="https://github.com/TourConnect/ti2-didgigo">Didgigo</a></th>
+<th><a href="https://github.com/TourConnect/ti2-tourconnect">TourConnect</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Base</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>validateToken</td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>copyMedia</td>
+<td></td>
+<td></td>
+<td></td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong>Content</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>getProfile</td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>updateProfile</td>
+<td></td>
+<td></td>
+<td></td>
+<td>✓</td>
+</tr>
+<tr>
+<td>getLocations</td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>getLocation</td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>createLocation</td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>updateLocation</td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>getProducts</td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>getProduct</td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>createProduct</td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>updateProduct</td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong>Bookings</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>searchProducts</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>searchBooking</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>searchAvailability</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>quoteAvailability</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>createBooking</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>cancelBooking</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>API logging</h2>
+<p>Currently logging is supported via elastic search, an elasticLogClient value can ben passed down, example:</p>
+<pre class="prettyprint source lang-javascript"><code>const { Client } = require('@elastic/elasticsearch');
+const elasticLogsClient = (() => {
+  if (!elasticLogs) return null;
+  return new Client({ node: elasticLogs });
+})();
+
+const ti2 = require('ti2')({
+  elasticLogsClient,
+  plugins: {
+    ventrata: require('ti2-ventrata'),
+    travelgate: require('ti2-travelgate'),
+    tourconnect: require('ti2-tourconnect'),
+  },
+});
+</code></pre>
+<h2>Contributing</h2>
+<p>Contributions are welcome and ecouraged.</p>
+<p>If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag &quot;enhancement&quot;. Don't forget to give the project a star! Thanks again!</p>
+<ul>
+<li>Fork the Project</li>
+<li>Create your Feature Branch (git checkout -b feature/AmazingFeature)</li>
+<li>Commit your Changes (git commit -m 'Add some AmazingFeature')</li>
+<li>Push to the Branch (git push origin feature/AmazingFeature)</li>
+<li>Open a Pull Request</li>
+</ul>
+<p>Feel free to check the <a href="https://github.com/TourConnect/ti2/issues">Issues Page</a>.</p>
+<h2>License</h2>
+<p>Distributed under the GPL-3 License. See LICENSE file for more information.</p>
+<p>TL;DR Here's what the license entails:</p>
+<ol>
+<li>Anyone can copy, modify and distribute this software.</li>
+<li>You have to include the license and copyright notice with each and every distribution.</li>
+<li>You can use this software privately.</li>
+<li>You can use this software for commercial purposes.</li>
+<li>If you dare build your business solely from this code, you risk open-sourcing the whole code base.</li>
+<li>If you modify it, you have to indicate changes made to the code.</li>
+<li>Any modifications of this code base MUST be distributed with the same license, GPLv3.</li>
+<li>This software is provided without warranty.</li>
+<li>The software author or license can not be held liable for any damages inflicted by the software.</li>
+</ol></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Fri Feb 18 2022 23:11:45 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
