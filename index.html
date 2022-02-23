@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Plugin.html">Plugin</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#validateToken">validateToken</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#getProfile">getProfile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateProfile">updateProfile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createLocation">createLocation</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateLocation">updateLocation</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#getProducts">getProducts</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createProduct">createProduct</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateProduct">updateProduct</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchBooking">searchBooking</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchProducts">searchProducts</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchAvailability">searchAvailability</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchQuote">searchQuote</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createBooking">createBooking</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Tutorials</li><li class="nav-item"><a href="tutorial-plugin-development.html">Plugin Development</a></li><li class="nav-item"><a href="tutorial-setup-your-instance.html">Setting up your instancce</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Plugin.html">Plugin</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#validateToken">validateToken</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#getProfile">getProfile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateProfile">updateProfile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createLocation">createLocation</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateLocation">updateLocation</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#getProducts">getProducts</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createProduct">createProduct</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateProduct">updateProduct</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchBooking">searchBooking</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchProducts">searchProducts</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchAvailability">searchAvailability</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchQuote">searchQuote</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createBooking">createBooking</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
 </nav>
 
 <div id="main">
@@ -61,35 +61,10 @@
 <p>Ti2 gives a free, open source solution to building integrations across our industry. In addition, tools can be built on top of Ti2, that add additional value to these integrations - whether for the good of our industry or for profit.</p>
 <p><strong>Become part of the community, start building on Ti2 today!</strong></p>
 <h2>Getting Started</h2>
-<h3>Requirements</h3>
-<p>Some environment variables are required for ti2 to start</p>
-<ul>
-<li>DB_URL (mysql connection in url format)</li>
-<li>dbCryptoKey (integration details encription key, should be a 32 chars random string base64 encoded)</li>
-<li>adminKey (a key for admin related requests)</li>
-<li>jwtKey (a key to encrypt user sessions request)</li>
-<li>frontendKey (an additional optional key to validate the origin of the requests)</li>
-<li>PORT (an optional port to run the http server, in case a port is not specified as a parameter)</li>
-</ul>
-<h3>Starting your server</h3>
-<p>You can start your own instance by instlling ti2 and any aplugin syou may want to use on your own nodejs project root folter:</p>
-<pre class="prettyprint source lang-bash"><code>$ npm i ti2 ti2-travelgate ti2-ventrata ti2-tourconnect
-</code></pre>
-<p>To start the server with default values use the following:</p>
-<pre class="prettyprint source lang-javascript"><code>const ti2 = require('ti2')({
-  plugins: {
-    travelgate: require('ti2-travelgate'),
-    ventrata: require('ti2-ventrata'),
-    tourconnect: require('ti2-tourconnect'),
-  },
-});
-</code></pre>
+<p>You can start follow <a href="tutorial-setup-your-instance.html">this guide</a> to create an instance, if you want to add an integration (like for your own backend) or add a new internal funtionality you can <a href="tutorial-plugin-development.html">create a plugin</a> for your system.</p>
+<p>By default a ti2 instance serves a documentaiton page for the available API restfull methods, you can review this page here on <a href="https://ti2-staging.tourconnect.com/api-docs/">this</a> testing instance.</p>
 <h2>Plugins</h2>
 <p>Plugins are the connectores to other systems and/or features you intent to use; by default the server will start an API service on port 10010 and the swagger documentation on the path //api-docs, (you can disable wither by passing the startServer param as False or the apiDocs as False.</p>
-<p>Plugin environment keys are passed down to the instance while is being created, this is the preferred way of accesing environmen keys from the plugins, such values are not design to hold client / user's API keys or specific data, they are to be stored on the database itself via the AppKey collection.</p>
-<p>Plugin ENV variable name convention: ti2_pluginName_environmenVariableName, for example:</p>
-<pre class="prettyprint source lang-env"><code>ti2_tourconnect_apiUrl=http://backend:8080
-</code></pre>
 <h3>Plugin Library</h3>
 <table>
 <thead>
@@ -251,23 +226,6 @@
 </tr>
 </tbody>
 </table>
-<h2>API logging</h2>
-<p>Currently logging is supported via elastic search, an elasticLogClient value can ben passed down, example:</p>
-<pre class="prettyprint source lang-javascript"><code>const { Client } = require('@elastic/elasticsearch');
-const elasticLogsClient = (() => {
-  if (!elasticLogs) return null;
-  return new Client({ node: elasticLogs });
-})();
-
-const ti2 = require('ti2')({
-  elasticLogsClient,
-  plugins: {
-    ventrata: require('ti2-ventrata'),
-    travelgate: require('ti2-travelgate'),
-    tourconnect: require('ti2-tourconnect'),
-  },
-});
-</code></pre>
 <h2>Contributing</h2>
 <p>Contributions are welcome and ecouraged.</p>
 <p>If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag &quot;enhancement&quot;. Don't forget to give the project a star! Thanks again!</p>
@@ -305,7 +263,7 @@ const ti2 = require('ti2')({
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Fri Feb 18 2022 17:41:29 GMT-0600 (Central Standard Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Wed Feb 23 2022 15:32:34 GMT+0000 (Coordinated Universal Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

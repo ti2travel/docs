@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Setting up your instancce - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Tutorials</li><li class="nav-item"><a href="tutorial-plugin-development.html">Plugin Development</a></li><li class="nav-item"><a href="tutorial-setup-your-instance.html">Setting up your instancce</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Plugin.html">Plugin</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#validateToken">validateToken</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#getProfile">getProfile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateProfile">updateProfile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createLocation">createLocation</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateLocation">updateLocation</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#getProducts">getProducts</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createProduct">createProduct</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateProduct">updateProduct</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchBooking">searchBooking</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchProducts">searchProducts</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchAvailability">searchAvailability</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchQuote">searchQuote</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createBooking">createBooking</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Setting up your instancce</h1>
+    
+
+    <section>
+
+<header>
+    
+</header>
+
+<article>
+    <h2>Initializing your new Repo</h2>
+<p>We suggest creating a folder with your instance name+i2 (i.e acme-ti2); then initialize an node's npm package and install ti2 along with any plugins to be used.</p>
+<pre class="prettyprint source lang-bash"><code>$ mkdir acme-ti2
+$ cd acmme-ti2
+$ npm init .
+$ npm i ti2 ti2-tourconnect
+</code></pre>
+<h2>Requirements</h2>
+<p>A MySQl instance is required and the following environment variables are required:</p>
+<ul>
+<li>DB_URL (mysql connection in url format)</li>
+<li>dbCryptoKey (integration details encription key, should be a 32 chars base64 encoded random string)</li>
+<li>adminKey (a key for admin related requests)</li>
+<li>jwtKey (a key to encrypt user sessions request)</li>
+<li>frontendKey (an additional optional key to validate the origin of the requests)</li>
+<li>PORT (an optional port to run the http server, in case a port is not specified as a parameter)</li>
+</ul>
+<pre class="prettyprint source"><code>DB_URL=mysql://root:@mysqlserver/ti2development
+dbCryptoKey=cG9VYmJyQ2tlSDVHeXQ4RUN4VlNieEJRejNYWDlZU0g=
+jwtSecret=C8k0mrHVfWVTP7pIoZEHRrvFgTULhw3E4swDq1aoDH4P
+frontendKey=IpOiLahrGQxsQimwoK7Z
+adminKey=bCviyz7iKyuEBoOVlODn
+</code></pre>
+<p>After installing the ti2 package you need to run the datbase migrations for ti2:</p>
+<pre class="prettyprint source"><code>$  npm explore ti2&lt;pluginName> -- npx sequelize db:migrate&quot;
+</code></pre>
+<h2>Entry File</h2>
+<p>then just create an entry file like this :</p>
+<pre class="prettyprint source lang-javascript"><code>// index.js
+const ti2 = require('ti2')({
+  plugins: {
+    travelgate: require('ti2-travelgate'),
+    ventrata: require('ti2-ventrata'),
+    tourconnect: require('ti2-tourconnect'),
+  },
+});
+</code></pre>
+<p>and stat the server using node:</p>
+<pre class="prettyprint source"><code>$ node index.js
+</code></pre>
+<h2>API logging</h2>
+<p>Currently logging is supported via elastic search, an elasticLogClient value can ben passed down, example:</p>
+<pre class="prettyprint source lang-javascript"><code>const { Client } = require('@elastic/elasticsearch');
+const elasticLogsClient = (() => {
+  if (!elasticLogs) return null;
+  return new Client({ node: elasticLogs });
+})();
+
+const ti2 = require('ti2')({
+  elasticLogsClient,
+  plugins: {
+    ventrata: require('ti2-ventrata'),
+    travelgate: require('ti2-travelgate'),
+    tourconnect: require('ti2-tourconnect'),
+  },
+});
+</code></pre>
+</article>
+
+</section>
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Wed Feb 23 2022 15:32:34 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
