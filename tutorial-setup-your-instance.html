@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Setting up your instancce - Documentation</title>
+    <title>Running your own Ti2 - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -24,12 +24,12 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Tutorials</li><li class="nav-item"><a href="tutorial-plugin-development.html">Plugin Development</a></li><li class="nav-item"><a href="tutorial-setup-your-instance.html">Setting up your instancce</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Plugin.html">Plugin</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#validateToken">validateToken</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#getProfile">getProfile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateProfile">updateProfile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createLocation">createLocation</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateLocation">updateLocation</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#getProducts">getProducts</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createProduct">createProduct</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateProduct">updateProduct</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchBooking">searchBooking</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchProducts">searchProducts</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchAvailability">searchAvailability</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchQuote">searchQuote</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createBooking">createBooking</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Tutorials</li><li class="nav-item"><a href="tutorial-plugin-development.html">Plugin Development</a></li><li class="nav-item"><a href="tutorial-setup-your-instance.html">Running your own Ti2</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Plugin.html">Plugin</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#validateToken">validateToken</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#getProfile">getProfile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateProfile">updateProfile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createLocation">createLocation</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateLocation">updateLocation</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#getProducts">getProducts</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createProduct">createProduct</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateProduct">updateProduct</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchBooking">searchBooking</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchProducts">searchProducts</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchAvailability">searchAvailability</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchQuote">searchQuote</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createBooking">createBooking</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
 </nav>
 
 <div id="main">
     
-    <h1 class="page-title">Setting up your instancce</h1>
+    <h1 class="page-title">Running your own Ti2</h1>
     
 
     <section>
@@ -39,14 +39,23 @@
 </header>
 
 <article>
-    <h2>Initializing your new Repo</h2>
-<p>We suggest creating a folder with your instance name+i2 (i.e acme-ti2); then initialize an node's npm package and install ti2 along with any plugins to be used.</p>
-<pre class="prettyprint source lang-bash"><code>$ mkdir acme-ti2
-$ cd acmme-ti2
-$ npm init .
-$ npm i ti2 ti2-tourconnect
-</code></pre>
-<h2>Requirements</h2>
+    <h2>Why ?</h2>
+<ul>
+<li>
+<p>You want to test your plugins before submitting it to our Ti2 instance, it is a good idea to spin up your own Ti2 test instance, you can test against all the Ti2 REST Apis (In the future, we will provide a Ti2 sandbox instance).</p>
+</li>
+<li>
+<p>You want to host your own server under your premises for production or staging purposes or becuase you want to run it inside your network.</p>
+</li>
+</ul>
+<p>When you are runnning a Ti2 server you can access the documentation page on the url (http://[yourinstance]/api-docs/) that serves the available API methods, you can review the <a href="https://ti2-staging.tourconnect.com/api-docs/">swagger documentation page online</a> .</p>
+<h2>Security</h2>
+<p>An admin api key is set trough an environment variable called adminKey; using this API key is possible to create Users and/or application authentications.</p>
+<p>A new User / User Authentication can be created using the endpoint <a href="https://ti2.tourconnect.dev/api-docs/#/admin/createUserToken">createUserToken</a>; the return value consists of a JWT token for further user intraction with the App; the admin API key is required; no password is saved on the server side.</p>
+<p>Apps / Integrations can be created using the admin API Key; this after the plugin had been added to the codebase; the app can be created using the endpoint <a href="https://ti2.tourconnect.dev/api-docs/#/admin/createApp">createApp</a>; such endpoint returns a key that can be used by the app to interact with user Ids; such interactions allow the app to push for changes related to user integrations, the app can list the users currently configured for it using the endpoint <a href="https://ti2.tourconnect.dev/api-docs/#/app/listAppTokens">listAppTokens</a>; the passwords for Apps are encripted onde the database using aes-256-cbc, more details can be found on the <a href="https://github.com/ti2travel/ti2/blob/main/models/integration.js"><code>models/integrations.js</code></a> file.</p>
+<p>User + app integration credentials can be added after the app has been added to the system; these can be added by either the user, admin or the app itself using the endpoint <a href="https://ti2.tourconnect.dev/api-docs/#/app/createAppToken">createAppToken</a>. These keys are saved in JWT format on the database.</p>
+<h2>Get Started</h2>
+<h3>Requirements and Evironment variables</h3>
 <p>A MySQl instance is required and the following environment variables are required:</p>
 <ul>
 <li>DB_URL (mysql connection in url format)</li>
@@ -62,10 +71,17 @@ jwtSecret=C8k0mrHVfWVTP7pIoZEHRrvFgTULhw3E4swDq1aoDH4P
 frontendKey=IpOiLahrGQxsQimwoK7Z
 adminKey=bCviyz7iKyuEBoOVlODn
 </code></pre>
+<h3>Initialize a new NodeJS project</h3>
+<p>We suggest creating a folder with your instance name+i2 (i.e acme-ti2); then initialize an node's npm package and install ti2 along with any plugins to be used.</p>
+<pre class="prettyprint source lang-bash"><code>$ mkdir acme-ti2
+$ cd acmme-ti2
+$ npm init .
+$ npm i ti2 ti2-tourconnect
+</code></pre>
 <p>After installing the ti2 package you need to run the datbase migrations for ti2:</p>
 <pre class="prettyprint source"><code>$  npm explore ti2&lt;pluginName> -- npx sequelize db:migrate&quot;
 </code></pre>
-<h2>Entry File</h2>
+<h3>Entry File</h3>
 <p>then just create an entry file like this :</p>
 <pre class="prettyprint source lang-javascript"><code>// index.js
 const ti2 = require('ti2')({
@@ -105,7 +121,7 @@ const ti2 = require('ti2')({
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Mon Feb 28 2022 15:03:50 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
