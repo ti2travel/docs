@@ -39,20 +39,20 @@
 </header>
 
 <article>
-    <h2>Why ?</h2>
+    <h2>Why would I want to run my own instance?</h2>
 <ul>
 <li>
-<p>You want to test your plugins before submitting it to our Ti2 instance, it is a good idea to spin up your own Ti2 test instance, you can test against all the Ti2 REST Apis (In the future, we will provide a Ti2 sandbox instance).</p>
+<p>Scenario 1: You want to test your plugins before submitting it to our Ti2 instance, it is a good idea to spin up your own Ti2 test instance, you can test against all the Ti2 REST Apis (In the future, we will provide a Ti2 sandbox instance).</p>
 </li>
 <li>
-<p>You want to host your own server under your premises for production or staging purposes or becuase you want to run it inside your network.</p>
+<p>Scenario 2: You want to host your own Ti2 server so you can have everything under your own control.</p>
 </li>
 </ul>
-<p>When you are runnning a Ti2 server you can access the documentation page on the url (http://[yourinstance]/api-docs/) that serves the available API methods, you can review the <a href="https://ti2-staging.tourconnect.com/api-docs/">swagger documentation page online</a> .</p>
+<p>When you are runnning a Ti2 server you can access the documentation page on the url (http://[yourinstance]/api-docs/) that shows the available API methods, you can review the <a href="https://ti2-staging.tourconnect.com/api-docs/">swagger documentation page online</a> .</p>
 <h2>Security</h2>
 <p>An admin api key is set trough an environment variable called adminKey; using this API key is possible to create Users and/or application authentications.</p>
-<p>A new User / User Authentication can be created using the endpoint <a href="https://ti2.tourconnect.dev/api-docs/#/admin/createUserToken">createUserToken</a>; the return value consists of a JWT token for further user intraction with the App; the admin API key is required; no password is saved on the server side.</p>
-<p>Apps / Integrations can be created using the admin API Key; this after the plugin had been added to the codebase; the app can be created using the endpoint <a href="https://ti2.tourconnect.dev/api-docs/#/admin/createApp">createApp</a>; such endpoint returns a key that can be used by the app to interact with user Ids; such interactions allow the app to push for changes related to user integrations, the app can list the users currently configured for it using the endpoint <a href="https://ti2.tourconnect.dev/api-docs/#/app/listAppTokens">listAppTokens</a>; the passwords for Apps are encripted onde the database using aes-256-cbc, more details can be found on the <a href="https://github.com/ti2travel/ti2/blob/main/models/integration.js"><code>models/integrations.js</code></a> file.</p>
+<p>A new User/User Authentication can be created using the endpoint <a href="https://ti2.tourconnect.dev/api-docs/#/admin/createUserToken">createUserToken</a>; the return value consists of a JWT token for further user intraction with the App; the admin API key is required; no password is saved on the server side.</p>
+<p>Apps/Integrations can be created using the admin API Key; this after the plugin had been added to the codebase; the app can be created using the endpoint <a href="https://ti2.tourconnect.dev/api-docs/#/admin/createApp">createApp</a>; such endpoint returns a key that can be used by the app to interact with user Ids; such interactions allow the app to push for changes related to user integrations, the app can list the users currently configured for it using the endpoint <a href="https://ti2.tourconnect.dev/api-docs/#/app/listAppTokens">listAppTokens</a>; the passwords for Apps are encripted onde the database using aes-256-cbc, more details can be found on the <a href="https://github.com/ti2travel/ti2/blob/main/models/integration.js"><code>models/integrations.js</code></a> file.</p>
 <p>User + app integration credentials can be added after the app has been added to the system; these can be added by either the user, admin or the app itself using the endpoint <a href="https://ti2.tourconnect.dev/api-docs/#/app/createAppToken">createAppToken</a>. These keys are saved in JWT format on the database.</p>
 <h2>Get Started</h2>
 <h3>Requirements and Evironment variables</h3>
@@ -78,7 +78,7 @@ $ cd acmme-ti2
 $ npm init .
 $ npm i ti2 ti2-tourconnect
 </code></pre>
-<p>After installing the ti2 package you need to run the datbase migrations for ti2:</p>
+<p>After installing the ti2 package you need to run the database migrations for ti2:</p>
 <pre class="prettyprint source"><code>$  npm explore ti2&lt;pluginName> -- npx sequelize db:migrate&quot;
 </code></pre>
 <h3>Entry File</h3>

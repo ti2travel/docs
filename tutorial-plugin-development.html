@@ -42,12 +42,12 @@
     <h2>Getting Started</h2>
 <p>Plugins can extend the functionality of Ti2 and/or provide access to other platforms; you should use one of the following methods to provide a stadandarized way to access other systems; if you want to implement new functionality that is not encompassed on the available methods you are more than welcome to add new methods and contribute to the Ti2 codebase.</p>
 <h2>Available Methods</h2>
-<p>In oorder for an integration or system apps, we must use a set of standirzed methods to matain a compatibility; there are following methods are available, more can be supported but should be a part of the API TI2 spec to maximize it's compatibility.</p>
+<p>We are using a set of standardized methods to maintain compatibility; the following methods are available, more can be supported but should be a added to the TI2 spec first to maximize it's compatibility.</p>
 <p><strong>General Methods</strong> (should always be included):</p>
 <ul>
 <li><a href="Plugin.html#validateToken"><code>validateToken</code></a></li>
 </ul>
-<p><strong>Content Methods</strong> (related to marketing information update for profile, locations and/or products):</p>
+<p><strong>Content Methods</strong> (marketing information for (company)profile, locations and/or products):</p>
 <ul>
 <li><a href="Plugin.html#getProfile"><code>getProfile</code></a></li>
 <li><a href="Plugin.html#updateProfile"><code>updateProfile</code></a></li>
@@ -57,7 +57,7 @@
 <li><a href="Plugin.html#createProduct"><code>createProduct</code></a></li>
 <li><a href="Plugin.html#updateProduct"><code>updateProduct</code></a></li>
 </ul>
-<p><strong>Booking Methods</strong> (all related to bookings and operations):</p>
+<p><strong>Booking Methods</strong> (bookings and operations):</p>
 <ul>
 <li><a href="Plugin.html#searchBooking"><code>searchBooking</code></a></li>
 <li><a href="Plugin.html#searchProducts"><code>searchProducts</code></a></li>
@@ -67,12 +67,12 @@
 </ul>
 <hr>
 <h2>Environment variables</h2>
-<p>Plugin environment keys are passed down to the instance while is being created, this is the preferred way of accesing environmen keys from the plugins, such values are not design to hold client / user's API keys or specific data, they are to be stored on the database itself via the AppKey collection.</p>
+<p>Plugin environment keys are passed down from the hosting ti2 instance when they are generated, this is the preferred way to access environment keys from the plugins, such values are not design to hold client / user's API keys or specific data, they are to be stored in the database via the AppKey collection.</p>
 <p>Plugin ENV variable name convention: ti2_pluginName_environmenVariableName, for example:</p>
 <pre class="prettyprint source lang-env"><code>ti2_tourconnect_apiUrl=http://backend:8080
 </code></pre>
 <h2>Codebase setup</h2>
-<p>You can review some of the plugins previously developed and use them as a guide, plugin methods are encourage to include tests and return results on the same format, however the return values can include additional information, currently Ti2 is expected to run on node version 12.22.8; we suggest you use the same for your codebase.</p>
+<p>You can review some of the plugins previously developed and use them as a guide, plugin methods are encourage to include tests and to return results with the same format; however, the returned values can include additional information, currently Ti2 is expected to run on node version 12.22.8; we suggest you use the same for your codebase.</p>
 <p>After initializing your git environment for development; you can initialize your node project; we recommend naming your repo ti2-&lt;pluginname&gt; but it is not required.</p>
 <pre class="prettyprint source lang-bash"><code>$ node init .
 </code></pre>
@@ -88,7 +88,7 @@ class Plugin {
 }
 module.exports = Plugin;
 </code></pre>
-<p>The constructor of the plugins should extend the attributes with the received params, this allows the plugin to receive configurations or settings that are to be used by any user; that is settings that are shared across accounts.</p>
+<p>The constructor of the plugins should extend the attributes with the received params, this allows the plugin to receive configurations or settings that are to be used by any user, for example, settings data that can be shared across accounts.</p>
 <p>By default Ti2 will pass down all environment variables that match the plugin name to it's constructor; for example, if the following environment variables are defined:</p>
 <pre class="prettyprint source"><code>ti2_ventrata_acceptLanguage=en
 ti2_travelgate_clientCode=tourconnect
@@ -116,7 +116,7 @@ class Plugin {
 }
 module.exports = Plugin;
 </code></pre>
-<p>The token parameter includes all the settings for the current configured user; on these example we are defauring this settings to the ones configured to the pluging when it was instanced; so if the user settings do not include an apiUrl it will fall back to the environment variable on the running server.</p>
+<p>The token parameter should store all the settings for the current configured end user; on these example we are defaulting this settings to the ones configured to the pluging when it was instanced; so if the user settings do not include an apiUrl it will fall back to the environment variable on the running server.</p>
 <h2>Testing Suite</h2>
 <p>The plugin should contain a test file, for the following example assumes we will be using jest as the testing platform.</p>
 <pre class="prettyprint source lang-bash"><code>$ npm i -D jest
@@ -160,9 +160,9 @@ describe('Base Tests', () => {
 <h3>To our hosted instance</h3>
 <p><a href="https://www.ti2.travel/contact-us">Contact us</a> with the npm published package to begin the testing and deployment process.</p>
 <h2>Extending the base API</h2>
-<p>Ti2 uses the <a href="https://swagger.io/specification/">Swagger API specification</a> standard to define it's own methods, you can review the base methods <a href="https://ti2-staging.tourconnect.com/api-docs/">here</a>; these methods can be extender using the same format; this allows any plugin to extend the base API endpoints that are linked to any plugin method (part of the base methods or new ones).</p>
+<p>Ti2 uses the <a href="https://swagger.io/specification/">Swagger API specification</a> standard to define it's own methods, you can review the basic methods <a href="https://ti2-staging.tourconnect.com/api-docs/">here</a>; these methods can be extended using the same format; this allows any plugin to extend the base API endpoints that are linked to any plugin method (part of the basic methods or new ones).</p>
 <p>All the extender methods would be availble under the /[plugin name] namespace, i.e.: /ti2-greatPlugin/ping.</p>
-<p>For Ti2 to pickup the extender definition one must create a new file on the root of the plugin named api.yml, such file would contain only the methods to be extender and it must comply with the current swagger version used on ti2.</p>
+<p>For Ti2 to pickup the extender definition, one must create a new file on the root of the plugin named api.yml, such file would contain only the methods to be extended and it must comply with the current swagger version used on ti2.</p>
 <pre class="prettyprint source lang-yaml"><code># api.yml
 openapi: '3.0.0'
 info:
@@ -203,12 +203,12 @@ paths:
                 $ref: '#/components/schemas/ServerInfo'
 </code></pre>
 <h2>Database Migrations (plugin's own database tables)</h2>
-<p>Ti2 uses <a href="https://sequelize.org/v6">Sequelize v6.13</a> and is the database ORM we ecourage to use, you can add your own tables via migrations that should be placed under a migrations folder on the root of the plugin folder.</p>
+<p>Ti2 uses <a href="https://sequelize.org/v6">Sequelize v6.13</a> which is the database ORM we ecourage you to use, you can add your own tables via migrations that should be placed under a migrations folder on the root of the plugin folder.</p>
 <p>Migrations should be run after the fact, from the root of ti2 instance like so:</p>
 <pre class="prettyprint source"><code>$  npm explore ti2&lt;pluginName> -- npx sequelize db:migrate&quot;
 </code></pre>
-<p>We strongly encourage all the plugin's table names are predicated with the plugin name (i.e. ti2-pluginName-cacheTable).</p>
-<p>This should be executed ater the ti2 project migrations have been executed.</p>
+<p>We strongly encourage all the plugin's table names are prefixed with the plugin name (i.e. ti2-pluginName-cacheTable).</p>
+<p>This should be executed after the ti2 project migrations have been executed.</p>
 <h2>Scheduled Task (to be released on v2)</h2>
 <p>TBD.</p>
 </article>
