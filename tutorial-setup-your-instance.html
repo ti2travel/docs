@@ -59,6 +59,7 @@
 <p>A MySQl instance is required and the following environment variables are required:</p>
 <ul>
 <li>DB_URL (mysql connection in url format)</li>
+<li>REDIS_URL (a redis database url to store the background queue)</li>
 <li>dbCryptoKey (integration details encription key, should be a 32 chars base64 encoded random string)</li>
 <li>adminKey (a key for admin related requests)</li>
 <li>jwtKey (a key to encrypt user sessions request)</li>
@@ -66,6 +67,7 @@
 <li>PORT (an optional port to run the http server, in case a port is not specified as a parameter)</li>
 </ul>
 <pre class="prettyprint source"><code>DB_URL=mysql://root:@mysqlserver/ti2development
+REDIS_URL=redis://redis:6379
 dbCryptoKey=cG9VYmJyQ2tlSDVHeXQ4RUN4VlNieEJRejNYWDlZU0g=
 jwtSecret=C8k0mrHVfWVTP7pIoZEHRrvFgTULhw3E4swDq1aoDH4P
 frontendKey=IpOiLahrGQxsQimwoK7Z
@@ -84,16 +86,46 @@ $ npm i ti2 ti2-tourconnect
 <h3>Entry File</h3>
 <p>then just create an entry file like this :</p>
 <pre class="prettyprint source lang-javascript"><code>// index.js
-const ti2 = require('ti2')({
-  plugins: {
-    travelgate: require('ti2-travelgate'),
-    ventrata: require('ti2-ventrata'),
-    tourconnect: require('ti2-tourconnect'),
-  },
-});
+
+module.exports = (async () => {
+    const ti2 = await require('ti2')({
+      plugins: {
+        ventrata: require('ti2-ventrata'),
+        travelgate: require('ti2-travelgate'),
+        tourconnect: require('ti2-tourconnect'),
+      },
+    });
+    return ti2;
+})();
+
 </code></pre>
-<p>and stat the server using node:</p>
-<pre class="prettyprint source"><code>$ node index.js
+<p>and start the server:</p>
+<pre class="prettyprint source lang-bash"><code>$ node index.js
+</code></pre>
+<p>in order to support the background job queue (required by some plugins) you should consider the following example:</p>
+<pre class="prettyprint source lang-javascript"><code>const plugins = {
+  ventrata: require('ti2-ventrata'),
+  travelgate: require('ti2-travelgate'),
+  tourconnect: require('ti2-tourconnect'),
+};
+
+module.exports = (async () => {
+  if (process.argv.indexOf('worker') > 0) {
+    const worker = await require('ti2')({
+      plugins,
+      worker: true,
+    });
+    return worker;
+  } else {
+    const ti2 = await require('ti2')({
+      plugins,
+    });
+    return ti2;
+  }
+})();
+</code></pre>
+<p>and start a background worker (on a second terminal), required for some plugins:</p>
+<pre class="prettyprint source lang-bash"><code>$ node index.js worker
 </code></pre>
 <h2>API logging</h2>
 <p>Currently logging is supported via elastic search, an elasticLogClient value can ben passed down, example:</p>
@@ -103,14 +135,28 @@ const elasticLogsClient = (() => {
   return new Client({ node: elasticLogs });
 })();
 
-const ti2 = require('ti2')({
-  elasticLogsClient,
-  plugins: {
-    ventrata: require('ti2-ventrata'),
-    travelgate: require('ti2-travelgate'),
-    tourconnect: require('ti2-tourconnect'),
-  },
-});
+const plugins = {
+  ventrata: require('ti2-ventrata'),
+  travelgate: require('ti2-travelgate'),
+  tourconnect: require('ti2-tourconnect'),
+};
+
+module.exports = (async () => {
+  if (process.argv.indexOf('worker') > 0) {
+    const worker = await require('ti2')({
+      elasticLogsClient,
+      plugins,
+      worker: true,
+    });
+    return worker;
+  } else {
+    const ti2 = await require('ti2')({
+      elasticLogsClient,
+      plugins,
+    });
+    return ti2;
+  }
+})();
 </code></pre>
 </article>
 
