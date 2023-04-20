@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Tutorials</li><li class="nav-item"><a href="tutorial-plugin-development.html">Plugin Development</a></li><li class="nav-item"><a href="tutorial-setup-your-instance.html">Running your own Ti2</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Plugin.html">Plugin</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#validateToken">validateToken</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#getProfile">getProfile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateProfile">updateProfile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createLocation">createLocation</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateLocation">updateLocation</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#getProducts">getProducts</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createProduct">createProduct</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateProduct">updateProduct</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchBooking">searchBooking</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchProducts">searchProducts</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchAvailability">searchAvailability</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#availabilityCalndar">availabilityCalndar</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchQuote">searchQuote</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createBooking">createBooking</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Tutorials</li><li class="nav-item"><a href="tutorial-plugin-development.html">Plugin Development</a></li><li class="nav-item"><a href="tutorial-setup-your-instance.html">Running your own Ti2</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Plugin.html">Plugin</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#validateToken">validateToken</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#tokenTemplate">tokenTemplate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#getProfile">getProfile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateProfile">updateProfile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createLocation">createLocation</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateLocation">updateLocation</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#getProducts">getProducts</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createProduct">createProduct</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateProduct">updateProduct</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchBooking">searchBooking</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchProducts">searchProducts</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchAvailability">searchAvailability</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#availabilityCalndar">availabilityCalndar</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchQuote">searchQuote</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createBooking">createBooking</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#queryAllotment">queryAllotment</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
 </nav>
 
 <div id="main">
@@ -94,6 +94,14 @@ class Plugin {
     });
     this.searchQuote = jestPlugin.fn(() => ({ quote: [{ id: chance.guid() }] }));
     this.createBooking = jestPlugin.fn(() => {});
+    this.queryAllotment = jestPlugin.fn(() => ({ allotments: [] }));
+    this.tokenTemplate = jestPlugin.fn(() => ({
+      apiKey: {
+        type: 'text',
+        regExp: /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/,
+        description: 'Api Key',
+      },
+    }));
 
     /**
      * Background and schedule Jos
@@ -121,6 +129,18 @@ class Plugin {
   validateToken() {
     return Boolean(this);
   }
+
+  /**
+   * Returns the the token template of a plugin.
+   * Properties are dynamic since every attribute should correspond to a token
+   * key, every attribute should contain at least the type (ie text) a regExp and 
+   * a description.
+   * The regExp property gets decomposed into both source and flags as strings.
+   */
+  tokenTemplate() {
+    return {};
+  }
+
   /**
    * GPS Location Object
    * @typedef {Object} GPSLocation
@@ -333,7 +353,7 @@ class Plugin {
    * @property {Cancelled|Active|Pending} status The currrent booking status.
    * @property {Holder} holder Booking holder information.
    * @property {string} telephone Contact telephone.
-   * @property {string} supplierId Supplier of the Booking
+   * @property {string} supplierBookingId Booking Id for the supplier booking system
    * @property {string} hotelId A HotelId if the booking is for an accommodation.
    * @property {string} hotelName A Hotel Name if the booking is for an accommodation.
    * @property {BookingRoom[]} rooms Booking Room details.
@@ -478,6 +498,50 @@ class Plugin {
    * @returns {Booking} retVal.booking - A Booking object.
    */
   createBooking() {}
+
+  
+
+  /**
+   * Allotment Object
+  /**
+   * @typedef {Object} Allotment
+   * @property {string} name - The name of the allotment.
+   * @property {string} description - A description of the allotment.
+   * @property {string} appliesTo - Specifies what the allotment applies to.
+   * @property {string} splitCode - The code used to split the allotment.
+   * @property {string} unitType - The type of unit used for the allotment.
+   * @property {Date} date - The date associated with the allotment using the input format.
+   * @property {string} release - The release period of the allotment as specified in the day inventory.
+   * @property {number} max - The maximum quantity allowed for the allotment as specified in the day inventory.
+   * @property {number} booked - The booked quantity of the allotment as specified in the day inventory.
+   * @property {boolean} request - Indicates whether requests are allowed for the allotment, based on the day inventory.
+   * @property {string[]} keyPaths - An array of key paths generated by combining supplier code and product codes.
+   */
+
+  /**
+   * Allotment Response Payload
+   * @typedef {Object} AllotmentResponse
+   * @property {Allotment[]} allotment - Array of allotment objects
+   */
+
+  /**
+   * Query Allotment
+   * @async
+   * @param {Object} args - Allotment query arguments.
+   * @param {Object} args.token - A token definition, it's content varies between integrations.
+   * @param {Object} args.payload - Search spect object.
+   *      dateFormat = 'DD/MM/YYYY',
+      startDate,
+      endDate,
+      keyPath,
+   * @param {string} args.payload.dateFormat - Date format to use for params and return value (i.e. DD/MM/YYYY
+   * @param {string} args.payload.startDate - Start date for the query of allotment objects
+   * @param {string} args.payload.endDate - End date for the query of allotment objects
+   * @param {string} args.payload.keyPath - End date for the query of allotment objects
+   * @returns {object} retVal - the return object.
+   * @returns {Booking} retVal.booking - A Booking object.
+   */
+  queryAllotment() {}
 }
 
 module.exports = Plugin;
