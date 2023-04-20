@@ -519,12 +519,6 @@ class Plugin {
    */
 
   /**
-   * Allotment Response Payload
-   * @typedef {Object} AllotmentResponse
-   * @property {Allotment[]} allotment - Array of allotment objects
-   */
-
-  /**
    * Query Allotment
    * @async
    * @param {Object} args - Allotment query arguments.
@@ -539,7 +533,7 @@ class Plugin {
    * @param {string} args.payload.endDate - End date for the query of allotment objects
    * @param {string} args.payload.keyPath - End date for the query of allotment objects
    * @returns {object} retVal - the return object.
-   * @returns {Booking} retVal.booking - A Booking object.
+   * @returns {Allotment[]} retVal.allotment - An array of allotment spec objects.
    */
   queryAllotment() {}
 }
