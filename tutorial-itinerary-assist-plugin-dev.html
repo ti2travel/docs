@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Itinerary Assist Plugin Tutorial - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Tutorials</li><li class="nav-item"><a href="tutorial-itinerary-assist-plugin-dev.html">Itinerary Assist Plugin Tutorial</a></li><li class="nav-item"><a href="tutorial-plugin-development.html">Plugin Development</a></li><li class="nav-item"><a href="tutorial-setup-your-instance.html">Running your own Ti2</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Plugin.html">Plugin</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#validateToken">validateToken</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#tokenTemplate">tokenTemplate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#getProfile">getProfile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateProfile">updateProfile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createLocation">createLocation</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateLocation">updateLocation</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#getProducts">getProducts</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createProduct">createProduct</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#updateProduct">updateProduct</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchBooking">searchBooking</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchProducts">searchProducts</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchAvailability">searchAvailability</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#availabilityCalendar">availabilityCalendar</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchQuote">searchQuote</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#createBooking">createBooking</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchProductsForItinerary">searchProductsForItinerary</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchAvailabilityForItinerary">searchAvailabilityForItinerary</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#addServiceToItinerary">addServiceToItinerary</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#getCreateItineraryFields">getCreateItineraryFields</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#searchItineraries">searchItineraries</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Plugin.html#queryAllotment">queryAllotment</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Itinerary Assist Plugin Tutorial</h1>
+    
+
+    <section>
+
+<header>
+    
+</header>
+
+<article>
+    <h3>Important notes:</h3>
+<ul>
+<li>
+<p>Required methods:</p>
+<ul>
+<li><a href="Plugin.html#searchProductsForItinerary"><code>searchProductsForItinerary</code></a></li>
+<li><a href="Plugin.html#searchAvailabilityForItinerary"><code>searchAvailabilityForItinerary</code></a></li>
+<li><a href="Plugin.html#addServiceToItinerary"><code>addServiceToItinerary</code></a></li>
+<li><a href="Plugin.html#searchItineraries"><code>searchItineraries</code></a></li>
+</ul>
+</li>
+<li>
+<p>Optional methods:</p>
+<ul>
+<li><a href="Plugin.html#getCreateItineraryFields"><code>getCreateItineraryFields</code></a></li>
+</ul>
+</li>
+<li>
+<p>If a key in the payload is said to be optional, it may be undefined or null, please handle them accordingly</p>
+</li>
+<li>
+<p>expected return structure should be exactly as described in the documentation, it's ok to include extra fields in the response, but please note that our IA tool will only handle the fields that are described in the documentation</p>
+</li>
+</ul>
+<hr>
+<h3>Existing Itinerary Assist Plugin</h3>
+<p><a href="https://github.com/tourconnect/ti2-tourplan">Tourplan</a>
+Feel free to use it as a reference for how tests are written and how it handles the authentication and data mapping.</p>
+<h3>FAQ</h3>
+<ol>
+<li>For searchProductsForItinerary, it says &quot;when we send empty payload, the expected response is the entire list of ACTIVE products&quot;. How do I handle pagination if my system has thousands of products? Is there a limit?</li>
+</ol>
+<p>We have to get access to the entire list of products, so we can create a vector database for AI to match the extracted text with a service. We recommend using a cache to store the products on your end and refresh it periodically.</p>
+<ol start="2">
+<li>My booking system uses different terms for passenger types (e.g., &quot;CHD&quot; instead of &quot;Child&quot;). Should I handle this mapping in the plugin, or will Ti2 provide a mapping configuration?</li>
+</ol>
+<p>You should handle this mapping in the plugin, as it's specific to your system.</p>
+<ol start="3">
+<li>How should I handle currency conversion? My system supports multiple currencies, but I don't see currency fields in the response formats.</li>
+</ol>
+<p>It's not required to include currency fields in the response, as the Itinerary Assist tool currently doesn't handle pricing related operations.</p>
+<ol start="4">
+<li>For real-time availability checks in searchAvailabilityForItinerary, what's the expected response time limit? My booking system might need to query multiple suppliers.</li>
+</ol>
+<p>The availbility check is always just for one service. And we expect the response time to be less than 30 seconds.</p>
+<ol start="5">
+<li>Will Ti2 provide a validation suite to verify my plugin's responses match the expected format?</li>
+</ol>
+<p>No, we currently rely on you to validate the response format, but we are working on a validation suite that will be available in the future.</p>
+<ol start="6">
+<li>The plugin.js file shows Jest tests, but are there specific test scenarios I need to cover?</li>
+</ol>
+<p>No, we don't have a specific test scenarios, but we recommend you to cover the following:</p>
+<ul>
+<li>Authentication</li>
+<li>Response format for all operations</li>
+</ul>
+<h2>Examples</h2>
+<h3><a href="Plugin.html#searchProductsForItinerary"><code>searchProductsForItinerary</code></a></h3>
+<p><strong>We need the entire list of ACTIVE products so that we can create vector database for AI to match the extracted text with a service</strong></p>
+<h4>Example Payload</h4>
+<p><strong>Note: when we send empty payload, the expected response is the entire list of ACTIVE products</strong></p>
+<pre class="prettyprint source lang-typescript"><code>  {}
+</code></pre>
+<h4>Example Response</h4>
+<p><strong>Note: We provided graphql types and queries for Itinerary Product, in hope for a easier way to map your data to our format. However, if you are not familiar with graphql, you don't have to use them, just make sure the response is in the correct format</strong></p>
+<pre class="prettyprint source lang-typescript"><code>{
+  &quot;products&quot;: [
+    // Example of an Accommodation product
+    {
+      &quot;productId&quot;: &quot;1&quot;,
+      &quot;productName&quot;: &quot;DoubleTree by Hilton Angel Kings Cross&quot;,
+      &quot;serviceTypes&quot;: [
+        &quot;Accommodation&quot;
+      ],
+      &quot;options&quot;: [
+        {
+          &quot;extras&quot;: [],
+          &quot;lastUpdateTimestamp&quot;: 1586595549,
+          &quot;optionId&quot;: &quot;106784&quot;,
+          &quot;optionName&quot;: &quot;Bed and English Breakfast-Executive Room&quot;,
+          &quot;restrictions&quot;: {
+            &quot;Adult&quot;: {
+              &quot;allowed&quot;: true,
+              &quot;maxAge&quot;: &quot;999&quot;,
+              &quot;minAge&quot;: &quot;16&quot;
+            },
+            &quot;Child&quot;: {
+              &quot;allowed&quot;: true,
+              &quot;maxAge&quot;: &quot;15&quot;,
+              &quot;minAge&quot;: &quot;2&quot;
+            },
+            &quot;Double&quot;: {
+              &quot;allowed&quot;: true,
+              &quot;maxAdults&quot;: &quot;2&quot;,
+              &quot;maxPax&quot;: &quot;2&quot;
+            },
+            &quot;Infant&quot;: {
+              &quot;allowed&quot;: true,
+              &quot;maxAge&quot;: &quot;1&quot;,
+              &quot;minAge&quot;: &quot;0&quot;
+            },
+            &quot;Quad&quot;: {
+              &quot;allowed&quot;: false
+            },
+            &quot;Single&quot;: {
+              &quot;allowed&quot;: true,
+              &quot;maxAdults&quot;: &quot;1&quot;,
+              &quot;maxPax&quot;: &quot;1&quot;
+            },
+            &quot;Triple&quot;: {
+              &quot;allowed&quot;: false
+            },
+            &quot;Twin&quot;: {
+              &quot;allowed&quot;: false
+            },
+            &quot;roomTypeRequired&quot;: true
+          },
+          &quot;serviceType&quot;: &quot;Accommodation&quot;,
+          &quot;units&quot;: [
+            {
+              &quot;restrictions&quot;: {
+                &quot;allowed&quot;: true,
+                &quot;paxCount&quot;: &quot;1&quot;
+              },
+              &quot;unitId&quot;: &quot;Single&quot;,
+              &quot;unitName&quot;: &quot;Single&quot;
+            },
+            {
+              &quot;restrictions&quot;: {
+                &quot;allowed&quot;: false
+              },
+              &quot;unitId&quot;: &quot;Twin&quot;,
+              &quot;unitName&quot;: &quot;Twin&quot;
+            },
+            {
+              &quot;restrictions&quot;: {
+                &quot;allowed&quot;: true,
+                &quot;paxCount&quot;: &quot;2&quot;
+              },
+              &quot;unitId&quot;: &quot;Double&quot;,
+              &quot;unitName&quot;: &quot;Double&quot;
+            },
+            {
+              &quot;restrictions&quot;: {
+                &quot;allowed&quot;: false
+              },
+              &quot;unitId&quot;: &quot;Quad&quot;,
+              &quot;unitName&quot;: &quot;Quad&quot;
+            }
+          ]
+        }
+      ]
+    },
+    // Example of a Transfers product
+    {
+      &quot;productId&quot;: &quot;6489&quot;,
+      &quot;productName&quot;: &quot;Davids of London Ltd&quot;,
+      &quot;serviceTypes&quot;: [
+        &quot;Transfers&quot;
+      ],
+      &quot;options&quot;: [
+        {
+          &quot;extras&quot;: [],
+          &quot;lastUpdateTimestamp&quot;: 1700750093,
+          &quot;optionId&quot;: &quot;LONTRDAVIDSHDWBVC&quot;,
+          &quot;optionName&quot;: &quot;Half-Day Warner Bros Studios (6-Hours)-FIT- V- Class (1-5 Pax)&quot;,
+          &quot;restrictions&quot;: {
+            &quot;Adult&quot;: {
+              &quot;allowed&quot;: true,
+              &quot;maxAge&quot;: &quot;999&quot;,
+              &quot;minAge&quot;: &quot;16&quot;
+            },
+            &quot;Child&quot;: {
+              &quot;allowed&quot;: true,
+              &quot;maxAge&quot;: &quot;15&quot;,
+              &quot;minAge&quot;: &quot;5&quot;
+            },
+            &quot;Double&quot;: {
+              &quot;allowed&quot;: false
+            },
+            &quot;Infant&quot;: {
+              &quot;allowed&quot;: true,
+              &quot;maxAge&quot;: &quot;4&quot;,
+              &quot;minAge&quot;: &quot;0&quot;
+            },
+            &quot;Quad&quot;: {
+              &quot;allowed&quot;: false
+            },
+            &quot;Single&quot;: {
+              &quot;allowed&quot;: false
+            },
+            &quot;Triple&quot;: {
+              &quot;allowed&quot;: false
+            },
+            &quot;Twin&quot;: {
+              &quot;allowed&quot;: false
+            },
+            &quot;roomTypeRequired&quot;: false
+          },
+          &quot;serviceType&quot;: &quot;Transfers&quot;,
+          &quot;units&quot;: [
+            {
+              &quot;restrictions&quot;: {
+                &quot;maxAge&quot;: &quot;999&quot;,
+                &quot;minAge&quot;: &quot;16&quot;
+              },
+              &quot;unitId&quot;: &quot;Adults&quot;,
+              &quot;unitName&quot;: &quot;Adults&quot;
+            },
+            {
+              &quot;restrictions&quot;: {
+                &quot;maxAge&quot;: &quot;15&quot;,
+                &quot;minAge&quot;: &quot;5&quot;
+              },
+              &quot;unitId&quot;: &quot;Children&quot;,
+              &quot;unitName&quot;: &quot;Children&quot;
+            },
+            {
+              &quot;restrictions&quot;: {
+                &quot;maxAge&quot;: &quot;4&quot;,
+                &quot;minAge&quot;: &quot;0&quot;
+              },
+              &quot;unitId&quot;: &quot;Infants&quot;,
+              &quot;unitName&quot;: &quot;Infants&quot;
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<h3><a href="Plugin.html#searchAvailabilityForItinerary"><code>searchAvailabilityForItinerary</code></a></h3>
+<h4>Example Payload</h4>
+<pre class="prettyprint source lang-typescript"><code>{
+  optionId: 'LONTRDAVIDSHDWBVC',
+  startDate: '2025-04-01',
+  chargeUnitQuantity: 1,
+  paxConfigs: [{ roomType: 'DB', adults: 2 }],
+}
+</code></pre>
+<h4>ExampleResponse</h4>
+<pre class="prettyprint source lang-typescript"><code>{
+  bookable: true,
+  rates: [{
+    rateId: '123',
+    externalRateText: 'Example rate description'
+  }]
+}
+</code></pre>
+<h3><a href="Plugin.html#addServiceToItinerary"><code>addServiceToItinerary</code></a></h3>
+<h4>Example Payload</h4>
+<pre class="prettyprint source lang-javascript"><code>{
+  quoteName: String,
+  rateId: String,           // Optional
+  quoteId: String,          // Optional
+  optionId: String,
+  startDate: String,        // YYYY-MM-DD
+  reference: String,        // Optional
+  paxConfigs: [{
+    roomType: String,       // Optional
+    passengers: [{          // Optional
+      firstName: String,
+      lastName: String,
+      passengerType: String,  // 'Adult' | 'Child' | 'Infant'
+      age: Number,            // Optional
+      dob: String,            // Optional, YYYY-MM-DD
+      personId: String        // Optional
+    }]
+  }],
+  extras: [{                // Optional
+    selectedExtra: {
+      id: String
+    },
+    quantity: Number
+  }],
+  puInfo: {                 // Optional, pickup information
+    time: String,           // Optional
+    location: String,       // Optional
+    flightDetails: String   // Optional
+  },
+  doInfo: {                 // Optional, dropoff information
+    time: String,           // Optional
+    location: String,       // Optional
+    flightDetails: String   // Optional
+  },
+  notes: String,            // Optional
+  QB: 'Q',                  // Q for Quote, B for Booking
+  customFieldValues: [{     // Optional
+    id: String,
+    value: String
+  }]
+}
+</code></pre>
+<h4>Example Response</h4>
+<pre class="prettyprint source lang-typescript"><code>{
+  message: 'Booking created successfully',
+  booking: {
+    id: '123',
+    reference: 'ref-123',
+    linePrice: '100',
+    lineId: 'lineId-123',
+  }
+}
+</code></pre>
+<h3><a href="Plugin.html#searchItineraries"><code>searchItineraries</code></a></h3>
+<h4>Example Payload</h4>
+<p><strong>Note: The payload must include either:</strong></p>
+<ul>
+<li>purchaseDateStart AND purchaseDateEnd, OR</li>
+<li>travelDateStart AND travelDateEnd, OR</li>
+<li>name, OR</li>
+<li>bookingId</li>
+</ul>
+<pre class="prettyprint source lang-javascript"><code>
+{
+  purchaseDateStart: String,  // Optional, YYYY-MM-DD
+  purchaseDateEnd: String,    // Optional, YYYY-MM-DD
+  travelDateStart: String,    // Optional, YYYY-MM-DD
+  travelDateEnd: String,      // Optional, YYYY-MM-DD
+  name: String,              // Optional
+  bookingId: String          // Optional
+}
+</code></pre>
+<h4>Example Response</h4>
+<p><strong>Note: We provided graphql types and queries for Itinerary Booking, in hope for a easier way to map your data to our format. However, if you are not familiar with graphql, you don't have to use them, just make sure the response is in the correct format</strong></p>
+<pre class="prettyprint source lang-javascript"><code>{
+  &quot;bookings&quot;: [{
+      &quot;agentRef&quot;: &quot;2356674/1&quot;,
+      &quot;bookingId&quot;: &quot;316559&quot;,
+      &quot;bookingStatus&quot;: &quot;Quotation&quot;,
+      &quot;enteredDate&quot;: &quot;2024-09-12&quot;,
+      &quot;ref&quot;: &quot;ALFI393706&quot;,
+      &quot;serviceLines&quot;: [{
+          &quot;optionId&quot;: &quot;LONHOSANLONBFBDLX&quot;,
+          &quot;optionName&quot;: &quot;Bed and Full Buffet Breakfast&quot;,
+          &quot;paxConfigs&quot;: [{
+              &quot;adults&quot;: 1,
+              &quot;children&quot;: 0,
+              &quot;infants&quot;: 0,
+              &quot;passengers&quot;: [{
+                  &quot;age&quot;: null,
+                  &quot;dob&quot;: null,
+                  &quot;firstName&quot;: &quot;Sean&quot;,
+                  &quot;lastName&quot;: &quot;Conta&quot;,
+                  &quot;passengerType&quot;: &quot;Adult&quot;,
+                  &quot;personId&quot;: &quot;628199&quot;,
+                },
+              ],
+              &quot;roomType&quot;: &quot;DB&quot;,
+            },
+          ],
+          &quot;paxList&quot;: [{
+              &quot;age&quot;: null,
+              &quot;dob&quot;: null,
+              &quot;firstName&quot;: &quot;Sean&quot;,
+              &quot;lastName&quot;: &quot;Conta&quot;,
+              &quot;passengerType&quot;: &quot;Adult&quot;,
+              &quot;personId&quot;: &quot;628199&quot;,
+            },
+          ],
+          &quot;serviceLineId&quot;: &quot;745684&quot;,
+          &quot;startDate&quot;: &quot;2025-08-13&quot;,
+        },
+      ],
+      &quot;totalPrice&quot;: &quot;187795&quot;,
+      &quot;travelDate&quot;: &quot;2025-08-13&quot;,
+    },
+  ],
+}
+</code></pre>
+<h4>Example</h4>
+<pre class="prettyprint source lang-javascript"><code>await searchItineraries({
+  payload: {
+    purchaseDateStart: '2024-01-01',
+    purchaseDateEnd: '2024-12-31',
+    name: 'John Doe'
+  }
+})
+</code></pre>
+</article>
+
+</section>
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
